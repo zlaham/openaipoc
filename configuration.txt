@@ -1,0 +1,5 @@
+db_host=localhost;
+db_name=lenora_sydh;
+db_user=postgres;
+db_pass=admin;
+db_port=5432;

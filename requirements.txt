@@ -1,0 +1,7 @@
+boto3
+dask
+s3fs
+pandas
+openai
+psycopg2-binary
+streamlit
