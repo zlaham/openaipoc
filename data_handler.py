@@ -1,4 +1,3 @@
-import dask.dataframe as dd
 from io import BytesIO
 import pandas as pd
 
@@ -7,19 +6,19 @@ ACCESS_KEY = "AKIA3Q3I2AYTALIB7WRI"
 SECRET_ACCESS_KEY = "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"
 
 
-def return_dask_df_from_csv(csv_path):
-    dask_df = dd.read_csv(
-            csv_path,
-            assume_missing=True,  # This handles mixed data types
-            error_bad_lines=False,  # Skip problematic lines
-            warn_bad_lines=True,    # Show warnings for skipped lines
-            storage_options={
-                'key': ACCESS_KEY,
-                'secret': SECRET_ACCESS_KEY,
-                'client_kwargs': {'region_name': 'us-east-2'}
-            }
-        )
-    return dask_df
+# def return_dask_df_from_csv(csv_path):
+#     dask_df = dd.read_csv(
+#             csv_path,
+#             assume_missing=True,  # This handles mixed data types
+#             error_bad_lines=False,  # Skip problematic lines
+#             warn_bad_lines=True,    # Show warnings for skipped lines
+#             storage_options={
+#                 'key': ACCESS_KEY,
+#                 'secret': SECRET_ACCESS_KEY,
+#                 'client_kwargs': {'region_name': 'us-east-2'}
+#             }
+#         )
+#     return dask_df
 
 def return_pandas_df_from_csv(csv_path):
     # Read CSV with pandas directly from S3

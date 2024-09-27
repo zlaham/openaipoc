@@ -1,5 +1,4 @@
 boto3
-dask
 s3fs
 pandas
 openai
