@@ -6,6 +6,8 @@
 # from io import BytesIO
 
 
+# access_key_encrypted = ""
+# secret_key_encrypted = ""
 
 # source_bucket_name = "lenora.health-data.set"
 # source_zip_key = "SyH-DR_CSV_Data.zip"
@@ -14,8 +16,8 @@
 # # Create S3 client
 # s3_client = boto3.client(
 #     's3',
-#     aws_access_key_id=ACCESS_KEY,
-#     aws_secret_access_key=SECRET_ACCESS_KEY,
+#     aws_access_key_id=access_key_encrypted,
+#     aws_secret_access_key=secret_key_encrypted,
 #     region_name='us-east-2'
 # )
 

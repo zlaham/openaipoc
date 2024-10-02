@@ -2,7 +2,8 @@ from io import BytesIO
 import pandas as pd
 
 
-
+# access_key_encrypted = ""
+# secret_key_encrypted = ""
 
 # def return_pandas_df_from_csv(csv_path):
 #     # Read CSV with pandas directly from S3
@@ -10,8 +11,8 @@ import pandas as pd
 #         csv_path,
 #          nrows=10,
 #         storage_options={
-#             'key': ACCESS_KEY,
-#             'secret': SECRET_ACCESS_KEY,
+#             'key': access_key_encrypted,
+#             'secret': secret_key_encrypted,
 #             'client_kwargs': {'region_name': 'us-east-2'}
 #         }
 #     )
