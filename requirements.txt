@@ -4,3 +4,4 @@ pandas
 openai
 psycopg2-binary
 streamlit
+cryptography

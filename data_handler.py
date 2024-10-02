@@ -1,23 +1,21 @@
 from io import BytesIO
 import pandas as pd
 
-# AWS credentials
-ACCESS_KEY = "AKIA3Q3I2AYTNLHKIQYH"
-SECRET_ACCESS_KEY = "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"
 
 
-def return_pandas_df_from_csv(csv_path):
-    # Read CSV with pandas directly from S3
-    df = pd.read_csv(
-        csv_path,
-         nrows=10,
-        storage_options={
-            'key': ACCESS_KEY,
-            'secret': SECRET_ACCESS_KEY,
-            'client_kwargs': {'region_name': 'us-east-2'}
-        }
-    )
-    return df
+
+# def return_pandas_df_from_csv(csv_path):
+#     # Read CSV with pandas directly from S3
+#     df = pd.read_csv(
+#         csv_path,
+#          nrows=10,
+#         storage_options={
+#             'key': ACCESS_KEY,
+#             'secret': SECRET_ACCESS_KEY,
+#             'client_kwargs': {'region_name': 'us-east-2'}
+#         }
+#     )
+#     return df
 
 def convert_list_to_df(dict_list):
     return pd.DataFrame(dict_list)
