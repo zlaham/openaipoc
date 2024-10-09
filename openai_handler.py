@@ -56,6 +56,8 @@ def save_content(question, answer, thread_id):
     with open(thread_id+"_data.json", "a") as file:
             file.write(question+"\n")
             file.write(answer+"\n")
+            file.write("===========================================================================\n")
+            file.write("===========================================================================\n")
 
 
 # def save_content(thread_id, Q_A):

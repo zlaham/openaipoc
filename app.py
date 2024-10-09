@@ -38,22 +38,17 @@ def check_first_load():
 # Call the function
 check_first_load()
 logger.error(st.session_state.first_load)
+download_button_disabled = False
 
-try:
+def show_download_button():
     # Display status
     #if st.session_state.first_load:
     #    thread_id = uuid.uuid1().hex
     if os.path.exists(st.session_state.thread_id+'_data.json'):
         with open(st.session_state.thread_id+'_data.json', 'r') as file:
             st.session_state.file_content = file.read()
-    if st.session_state.file_content!="":             
-        button_clicked = st.download_button(label="Download File", data=st.session_state.file_content, file_name="data.txt")#, # Name of the file to download mime="text/plain" # MIME type for plain text ):
-        if button_clicked:
-            st.session_state.first_load = True
-            st.session_state.thread_id = uuid.uuid1().hex
-            st.session_state.file_content = ""
-except Exception as e:
-    logger.error("Exception occurred: %s", str(e))
+
+ 
 
 try:
     # Load the CSV using caching
@@ -64,6 +59,7 @@ try:
     question = st.text_input("Enter your question for OpenAI:", "Give me all the tables that are commercial.")
 
     if st.button("Run Analysis"):
+        st.session_state.first_load = False
         logger.info("Analysis button clicked with question: %s", question)
 
         # Process the data using your data_handler function
@@ -81,7 +77,19 @@ try:
             logger.info("Sending data to OpenAI with question: %s", question)
             response_data = openai_handler.open_ai_run_analysis(table_data, question, st.session_state.thread_id)
             logger.info("OpenAI response received")
-
+            show_download_button()
+            try:
+                # if st.session_state.file_content!="":             
+                button_clicked = st.download_button(label="Download File", data=st.session_state.file_content, file_name="data.txt", key="download_buttin")#, # Name of the file to download mime="text/plain" # MIME type for plain text ):
+                if button_clicked:
+                    st.session_state.first_load = True
+                    st.session_state.thread_id = uuid.uuid1().hex
+                    st.session_state.file_content = ""
+                    download_button_disabled = True
+                    # st.rerun()
+            except Exception as e:
+                logger.error("Exception occurred: %s", str(e))             
+            #st.rerun()
             # Extract the response and display it
             response = response_data#.choices[0].message.content
             st.write("OpenAI Response:")
@@ -98,4 +106,4 @@ except FileNotFoundError as fnf_error:
     logger.error("FileNotFoundError: %s", str(fnf_error))
 except Exception as e:
     st.error(f"An error occurred: {str(e)}")
-    logger.error("Exception occurred: %s", str(e))
+    logger.error("Exception occurred: %s", str(e)) 
