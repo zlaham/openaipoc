@@ -1,22 +1,24 @@
 from io import BytesIO
 import pandas as pd
+import cryptography_handler
 
+access_key_encrypted = b'gAAAAABnEoIb58j9oppdy91WAZQJK2TrpQMNs1ui3zi14E4OZ4PJaMSZ8BnefT9EtlwTZQIkPuZEy3WkKYhZyw7_w6fNq-W8DL3x89flwAIns6ln7Lhy5EA='
+secret_key_encrypted = b'gAAAAABnEoJElWPbzTlHaSckE2qwnS0VwtnhBOTdw1yfXZrRQAQT3e76pzLi9ctbej0eU2mxjN06AjOW5Nfl3Til4WyxM5VLktBlEFc2AMqAC9TbBAQOFfM0itMBL8OrZYojEaVPySD8'
 
-# access_key_encrypted = ""
-# secret_key_encrypted = ""
+key = cryptography_handler.load_key()
 
-# def return_pandas_df_from_csv(csv_path):
-#     # Read CSV with pandas directly from S3
-#     df = pd.read_csv(
-#         csv_path,
-#          nrows=10,
-#         storage_options={
-#             'key': access_key_encrypted,
-#             'secret': secret_key_encrypted,
-#             'client_kwargs': {'region_name': 'us-east-2'}
-#         }
-#     )
-#     return df
+def return_pandas_df_from_csv(csv_path):
+    # Read CSV with pandas directly from S3
+    df = pd.read_csv(
+        csv_path,
+        #  nrows=10,
+        storage_options={
+            'key': cryptography_handler.decrypt_api_key(access_key_encrypted,key),
+            'secret': cryptography_handler.decrypt_api_key(secret_key_encrypted,key),
+            'client_kwargs': {'region_name': 'us-east-2'}
+        }
+    )
+    return df
 
 def convert_list_to_df(dict_list):
     return pd.DataFrame(dict_list)
