@@ -2,8 +2,8 @@ from io import BytesIO
 import pandas as pd
 import cryptography_handler
 
-access_key_encrypted = b'gAAAAABnEoIb58j9oppdy91WAZQJK2TrpQMNs1ui3zi14E4OZ4PJaMSZ8BnefT9EtlwTZQIkPuZEy3WkKYhZyw7_w6fNq-W8DL3x89flwAIns6ln7Lhy5EA='
-secret_key_encrypted = b'gAAAAABnEoJElWPbzTlHaSckE2qwnS0VwtnhBOTdw1yfXZrRQAQT3e76pzLi9ctbej0eU2mxjN06AjOW5Nfl3Til4WyxM5VLktBlEFc2AMqAC9TbBAQOFfM0itMBL8OrZYojEaVPySD8'
+access_key_encrypted = b'gAAAAABnFhGuEZIpwBMDZs5u-3G-ccqLh_H37-7exik8uCQD0FBNJ6iiDb2Ocs3dy5eakINcC-DqHQnNv-ijrOHLhu1EofTgWDYsIdf1sr3YIJl4V0qImnc='
+secret_key_encrypted = b'gAAAAABnFhHE1eDnu8aU9-nEVwxIGKC7XtV-XJA9_CSpb6ABvocfwrMYcsg2BIhsxH67ev_yzlQ6DmalNe06YxJQGG8gWA-2hTaLShRyGHxhrVBI2LzdInNKSFK_sqOs2CDI3nC7wgpC'
 
 key = cryptography_handler.load_key()
 
